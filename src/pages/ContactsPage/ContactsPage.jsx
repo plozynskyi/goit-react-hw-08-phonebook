@@ -27,9 +27,9 @@ import {
   PhoneBookTitle,
   ContactsBox,
   ContactsTitle,
-} from './App.styled';
+} from './ContactsPage.styled';
 
-const App = () => {
+const ContactsPage = () => {
   const filteredContacts = useSelector(getFilteredContacts);
   const filter = useSelector(getFilter);
   const isLoading = useSelector(loading);
@@ -83,4 +83,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ContactsPage;
