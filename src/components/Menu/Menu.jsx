@@ -1,9 +1,12 @@
-import Button from '@mui/material/Button';
+import { useSelector } from 'react-redux';
 
-import MenuAuth from './MenuAuth/MenuAuth';
-
-import { Wrapper, MenuList, Link, LoginBox } from './menu.styled';
 import items from './items';
+import MenuAuth from './MenuAuth/MenuAuth';
+import MenuUser from './MenuUser/MenuUser';
+
+import { isUserLogin } from 'redux/auth/auth-selector';
+
+import { Wrapper, MenuList, Link } from './menu.styled';
 
 const Menu = () => {
   const elements = items.map(({ id, to, text }) => (
@@ -12,14 +15,13 @@ const Menu = () => {
     </li>
   ));
 
+  const isLogin = useSelector(isUserLogin);
+
   return (
     <Wrapper>
       <MenuList>{elements}</MenuList>
-      <MenuAuth />
-      {/* <LoginBox>
-        <p>mango@mail.com</p>
-        <Button variant="contained">Logout</Button>
-      </LoginBox> */}
+      {!isLogin && <MenuAuth />}
+      {isLogin && <MenuUser />}
     </Wrapper>
   );
 };

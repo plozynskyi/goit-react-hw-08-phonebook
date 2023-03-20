@@ -29,11 +29,5 @@ const Link = styled(NavLink)`
   }
 `;
 
-const LoginBox = styled.div`
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
-export { Wrapper, MenuList, Link, LoginBox };
+export { Wrapper, MenuList, Link };

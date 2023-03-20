@@ -6,21 +6,15 @@ import fields from './fields';
 import initialState from './initialState';
 import Button from 'components/Button/Button';
 
-const RegisterForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({
     initialState,
     onSubmit,
   });
-  const { name, email, password } = state;
+  const { email, password } = state;
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputField
-        value={name}
-        handleChange={handleChange}
-        {...fields.name}
-        margin="dense"
-      />
       <InputField
         value={email}
         handleChange={handleChange}
@@ -33,8 +27,8 @@ const RegisterForm = ({ onSubmit }) => {
         {...fields.password}
         margin="dense"
       />
-      <Button text={'Sign up'} />
+      <Button text={'Sign in'} />
     </form>
   );
 };
-export default RegisterForm;
+export default LoginForm;
