@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 `;
 
 const MenuList = styled.ul`
+  padding: 15px;
   list-style: none;
   display: flex;
 `;

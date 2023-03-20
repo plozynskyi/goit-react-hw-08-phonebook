@@ -26,9 +26,21 @@ export const signin = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await api.logout();
+      return data;
+    } catch ({ response }) {
+      return rejectWithValue(response);
+    }
+  }
+);
+
 export const current = createAsyncThunk(
   'auth/current',
-  async (_, { rejectWithValue }, getState) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
       const { auth } = getState();
       const data = await api.getCurrent(auth.token);

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { signup, signin, current } from './auth-operations';
+import { signup, signin, logout, current } from './auth-operations';
 
 const initialState = {
   user: {},
@@ -15,50 +15,64 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(signup.pending, store => {
-        store.isLoading = true;
-        store.error = null;
+      .addCase(signup.pending, state => {
+        state.isLoading = true;
+        state.error = null;
       })
-      .addCase(signup.fulfilled, (store, { payload }) => {
+      .addCase(signup.fulfilled, (state, { payload }) => {
         const { user, token } = payload;
-        store.isLoading = false;
-        store.user = user;
-        store.token = token;
-        store.isLogin = true;
+        state.isLoading = false;
+        state.user = user;
+        state.token = token;
+        state.isLogin = true;
       })
-      .addCase(signup.rejected, (store, { payload }) => {
-        store.isLoading = false;
-        store.error = payload;
+      .addCase(signup.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
       })
-      .addCase(signin.pending, store => {
-        store.isLoading = true;
-        store.error = null;
+      .addCase(signin.pending, state => {
+        state.isLoading = true;
+        state.error = null;
       })
-      .addCase(signin.fulfilled, (store, { payload }) => {
+      .addCase(signin.fulfilled, (state, { payload }) => {
         const { user, token } = payload;
-        store.isLoading = false;
-        store.user = user;
-        store.token = token;
-        store.isLogin = true;
+        state.isLoading = false;
+        state.user = user;
+        state.token = token;
+        state.isLogin = true;
       })
-      .addCase(signin.rejected, (store, { payload }) => {
-        store.isLoading = false;
-        store.error = payload;
+      .addCase(signin.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
       })
-      .addCase(current.pending, store => {
-        store.isLoading = true;
-        store.error = null;
+      .addCase(current.pending, state => {
+        state.isLoading = true;
+        state.error = null;
       })
-      .addCase(current.fulfilled, (store, { payload }) => {
-        const { user, token } = payload;
-        store.isLoading = false;
-        store.user = user;
-        store.token = token;
-        store.isLogin = true;
+      .addCase(current.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.user = payload;
+        state.isLogin = true;
       })
-      .addCase(current.rejected, (store, { payload }) => {
-        store.isLoading = false;
-        store.error = payload;
+      .addCase(current.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.token = '';
+        state.error = payload;
+      })
+
+      .addCase(logout.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(logout.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.user = {};
+        state.token = '';
+        state.isLogin = false;
+      })
+      .addCase(logout.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
       });
   },
 });

@@ -14,7 +14,7 @@ const persistConfig = {
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   auth: persistedAuthReducer,
   contacts: contactsReducer,
   filter: filterReducer,
