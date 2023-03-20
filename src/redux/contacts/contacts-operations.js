@@ -26,14 +26,14 @@ export const addContact = createAsyncThunk(
     }
   },
   {
-    condition: ({ name, phone }, { getState }) => {
+    condition: ({ name, number }, { getState }) => {
       const { contacts } = getState();
       const normalizedTitle = name.toLowerCase();
-      const normalizedAuthor = phone.toLowerCase();
-      const result = contacts.items.find(({ name, phone }) => {
+      const normalizedAuthor = number.toLowerCase();
+      const result = contacts.items.find(({ name, number }) => {
         return (
           name.toLowerCase() === normalizedTitle &&
-          phone.toLowerCase() === normalizedAuthor
+          number.toLowerCase() === normalizedAuthor
         );
       });
       if (result) {

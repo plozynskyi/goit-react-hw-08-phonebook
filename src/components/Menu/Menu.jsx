@@ -1,7 +1,8 @@
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import items from './items';
-import MenuAuth from './MenuAuth/MenuAuth';
+
 import MenuUser from './MenuUser/MenuUser';
 
 import { isUserLogin } from 'redux/auth/auth-selector';
@@ -19,8 +20,8 @@ const Menu = () => {
 
   return (
     <Wrapper>
+      <NavLink to="/">Logo</NavLink>
       <MenuList>{elements}</MenuList>
-      {!isLogin && <MenuAuth />}
       {isLogin && <MenuUser />}
     </Wrapper>
   );

@@ -41,8 +41,8 @@ const ContactsPage = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const addContacts = ({ name, phone }) => {
-    dispatch(addContact({ name, phone }));
+  const addContacts = ({ name, number }) => {
+    dispatch(addContact({ name, number }));
     if (isError) {
       toast.error(
         `The limit has been exceeded. You can only add 100 contacts!`

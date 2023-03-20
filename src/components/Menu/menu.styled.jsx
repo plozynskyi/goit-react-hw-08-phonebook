@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 const Wrapper = styled.div`
   padding: 15px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -28,6 +28,5 @@ const Link = styled(NavLink)`
     color: #1dcd4f;
   }
 `;
-
 
 export { Wrapper, MenuList, Link };

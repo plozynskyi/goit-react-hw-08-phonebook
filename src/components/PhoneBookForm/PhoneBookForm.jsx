@@ -23,11 +23,11 @@ const PhoneBooksForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ name, phone });
+    onSubmit({ name, number });
     setState({ ...initialState });
   };
 
-  const { name, phone } = state;
+  const { name, number } = state;
 
   return (
     <PhoneBookForm action="" onSubmit={handleSubmit}>
@@ -47,8 +47,8 @@ const PhoneBooksForm = ({ onSubmit }) => {
         <FormInputTitle>Number</FormInputTitle>
         <PhoneBookInput
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           onChange={handleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { ContactsList, ContactItem, RemoveBtn } from './phone-book-list.styled';
 
 const PhoneBookList = ({ removeContacts, items }) => {
-  const contacts = items.map(({ id, name, phone }) => (
+  const contacts = items.map(({ id, name, number }) => (
     <ContactItem key={id}>
-      {name}: {phone}
+      {name}: {number}
       <RemoveBtn onClick={() => removeContacts(id)} type="button">
         Delete
       </RemoveBtn>
@@ -27,7 +27,7 @@ PhoneBookList.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
     })
   ),
 };
