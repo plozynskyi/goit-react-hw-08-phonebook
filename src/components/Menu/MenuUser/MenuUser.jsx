@@ -5,7 +5,7 @@ import { getUser } from '../../../redux/auth/auth-selector';
 import { logout } from 'redux/auth/auth-operations';
 import { isUserLogin } from 'redux/auth/auth-selector';
 
-import { LoginBox } from './menu-user.styled';
+import { LoginBox, UserName } from './menu-user.styled';
 import { Button } from '@mui/material';
 
 const MenuUser = () => {
@@ -17,15 +17,13 @@ const MenuUser = () => {
     return <Navigate to="/home" />;
   }
 
-  console.log(isLogin);
-
   const onLogout = () => {
     dispatch(logout());
   };
 
   return (
     <LoginBox>
-      <p>{name}</p>
+      <UserName>{name}</UserName>
       <Button variant="contained" onClick={onLogout}>
         Logout
       </Button>

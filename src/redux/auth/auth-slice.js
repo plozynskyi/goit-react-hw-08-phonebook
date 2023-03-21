@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 import { signup, signin, logout, current } from './auth-operations';
 
@@ -40,10 +41,13 @@ const authSlice = createSlice({
         state.user = user;
         state.token = token;
         state.isLogin = true;
+        toast.success(`${user.name} hello!!!`);
       })
       .addCase(signin.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload;
+        state.error = payload.status;
+        console.log(payload.status);
+        // toast.error(`Login or password not correct, pleas try again`);
       })
       .addCase(current.pending, state => {
         state.isLoading = true;

@@ -1,3 +1,16 @@
+import * as React from 'react';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import PageviewIcon from '@mui/icons-material/Pageview';
+import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+
+import Stack from '@mui/material/Stack';
+import Badge from '@mui/material/Badge';
+
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -21,13 +34,7 @@ import {
 } from 'redux/contacts/contacts-selectors';
 import { getFilter } from '../../redux/filter/filter-selectors';
 
-import {
-  MainSection,
-  FormBox,
-  PhoneBookTitle,
-  ContactsBox,
-  ContactsTitle,
-} from './ContactsPage.styled';
+import { MainSection, ContactsTitle } from './ContactsPage.styled';
 
 const ContactsPage = () => {
   const filteredContacts = useSelector(getFilteredContacts);
@@ -59,15 +66,57 @@ const ContactsPage = () => {
   const isContacts = Boolean(filteredContacts.length);
 
   return (
-    <>
-      <MainSection>
-        <FormBox>
-          <PhoneBookTitle>Phonebook</PhoneBookTitle>
+    <MainSection>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <ContactsTitle>
+            <AddIcCallIcon />
+            <Typography>Add contact</Typography>
+          </ContactsTitle>
+        </AccordionSummary>
+        <AccordionDetails>
           <PhoneBooksForm onSubmit={addContacts} />
-        </FormBox>
-        <ContactsBox>
-          <ContactsTitle>Contacts</ContactsTitle>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <ContactsTitle>
+            <PageviewIcon />
+            <Typography>Find contact</Typography>
+          </ContactsTitle>
+        </AccordionSummary>
+        <AccordionDetails>
           <PhoneBookFilter value={filter} handleChange={handleFilter} />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion defaultExpanded={true}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <ContactsTitle>
+            <Stack spacing={5} direction="row">
+              <Badge
+                color="secondary"
+                badgeContent={filteredContacts.length}
+                showZero
+              >
+                <ContactPhoneIcon />
+              </Badge>
+            </Stack>
+            <Typography>Contacts</Typography>
+          </ContactsTitle>
+        </AccordionSummary>
+        <AccordionDetails>
           {isLoading && <Loader />}
           {isContacts && (
             <PhoneBookList
@@ -76,9 +125,9 @@ const ContactsPage = () => {
             />
           )}
           {!isContacts && <p>No contacts in list</p>}
-        </ContactsBox>
-      </MainSection>
-    </>
+        </AccordionDetails>
+      </Accordion>
+    </MainSection>
   );
 };
 

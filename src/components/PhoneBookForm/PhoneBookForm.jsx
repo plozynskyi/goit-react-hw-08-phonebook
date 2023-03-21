@@ -2,14 +2,11 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import initialState from './initialState';
+import fields from './fields';
+import InputField from 'components/TextField/InputField';
 
-import {
-  PhoneBookForm,
-  InputWrapper,
-  FormInputTitle,
-  PhoneBookInput,
-  ContactAddBtn,
-} from './phone-book-form.styled';
+import { Button } from '@mui/material';
+import { PhoneBookForm, InputWrapper } from './phone-book-form.styled';
 
 const PhoneBooksForm = ({ onSubmit }) => {
   const [state, setState] = useState({ ...initialState });
@@ -32,30 +29,30 @@ const PhoneBooksForm = ({ onSubmit }) => {
   return (
     <PhoneBookForm action="" onSubmit={handleSubmit}>
       <InputWrapper>
-        <FormInputTitle>Name</FormInputTitle>
-        <PhoneBookInput
-          type="text"
-          name="name"
+        <InputField
+          fullWidth
+          size="small"
+          sx={{}}
           value={name}
           onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
+          {...fields.name}
+          margin="dense"
         />
       </InputWrapper>
       <InputWrapper>
-        <FormInputTitle>Number</FormInputTitle>
-        <PhoneBookInput
-          type="tel"
-          name="number"
+        <InputField
+          fullWidth
+          size="small"
+          sx={{ marginTop: '15px' }}
           value={number}
           onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
+          {...fields.number}
+          margin="dense"
         />
       </InputWrapper>
-      <ContactAddBtn type="submit">Add contact</ContactAddBtn>
+      <Button sx={{ marginTop: '15px' }} variant="contained" type="submit">
+        Add contact
+      </Button>
     </PhoneBookForm>
   );
 };

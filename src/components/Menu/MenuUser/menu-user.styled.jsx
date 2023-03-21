@@ -8,4 +8,8 @@ const LoginBox = styled.div`
   gap: 15px;
 `;
 
-export { LoginBox };
+const UserName = styled.p`
+  font-weight: bold;
+`;
+
+export { LoginBox, UserName };

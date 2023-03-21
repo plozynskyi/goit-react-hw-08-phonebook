@@ -1,16 +1,22 @@
 import PropTypes from 'prop-types';
 
-import {
-  FilterBox,
-  FilterLabel,
-  PhoneBookInput,
-} from './phone-book-filter.styled';
+import InputField from 'components/TextField/InputField';
+
+import { FilterBox, FilterLabel } from './phone-book-filter.styled';
 
 const PhoneBookFilter = ({ handleChange, value }) => {
   return (
     <FilterBox>
       <FilterLabel>Find contacts by name</FilterLabel>
-      <PhoneBookInput value={value} name="filter" onChange={handleChange} />
+      <InputField
+        fullWidth
+        size="small"
+        sx={{}}
+        value={value}
+        name="filter"
+        onChange={handleChange}
+        margin="dense"
+      />
     </FilterBox>
   );
 };

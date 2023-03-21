@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import ListItem from '@mui/material/ListItem';
 
 const ContactsList = styled.ul`
   display: flex;
@@ -6,10 +7,7 @@ const ContactsList = styled.ul`
   gap: 10px;
   margin-left: 40px;
 `;
-const ContactItem = styled.li`
-  padding: 5px;
-  list-style-type: disc;
-`;
+
 const RemoveBtn = styled.button`
   border: 1px solid gray;
   border-radius: 15px;
@@ -26,4 +24,11 @@ const RemoveBtn = styled.button`
   }
 `;
 
-export { ContactsList, ContactItem, RemoveBtn };
+const ContactItem = styled(ListItem)``;
+
+const CallContact = styled.a`
+  text-decoration: none;
+  color: inherit;
+`;
+
+export { ContactsList, ContactItem, RemoveBtn, CallContact };

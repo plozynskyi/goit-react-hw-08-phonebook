@@ -8,16 +8,17 @@ import authReducer from './auth/auth-slice';
 
 const persistConfig = {
   key: 'root',
+  version: 1,
   storage,
   whitelist: ['token'],
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
-const rootReducer = combineReducers({
+const persistedReducer = combineReducers({
   auth: persistedAuthReducer,
   contacts: contactsReducer,
   filter: filterReducer,
 });
 
-export default rootReducer;
+export default persistedReducer;

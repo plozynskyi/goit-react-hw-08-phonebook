@@ -5,6 +5,8 @@ import { routes } from 'routes';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
+import Loader from 'shared/Loader/Loader';
+
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
@@ -14,7 +16,7 @@ const UserRoutes = () => {
   const { HOME, LOGIN, REGISTER, CONTACTS } = routes;
 
   return (
-    <Suspense fallback={<p>....Load page</p>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path={HOME} element={<HomePage />} />
         <Route element={<PrivateRoute />}>
