@@ -1,6 +1,6 @@
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Menu from './components/Menu/Menu';
@@ -14,13 +14,13 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <AuthProvider>
-          <BrowserRouter basename="/goit-react-hw-08-phonebook">
+        <BrowserRouter basename="/goit-react-hw-08-phonebook">
+          <AuthProvider>
             <Menu />
             <UserRoutes />
             <ToastContainer theme="light" autoClose={3000} />
-          </BrowserRouter>
-        </AuthProvider>
+          </AuthProvider>
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   );

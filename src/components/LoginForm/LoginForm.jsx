@@ -4,7 +4,8 @@ import InputField from 'components/TextField/InputField';
 
 import fields from './fields';
 import initialState from './initialState';
-import Button from 'components/Button/Button';
+
+import { Button } from '@mui/material';
 
 const LoginForm = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({
@@ -16,18 +17,25 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <InputField
+        sx={{ width: '350px' }}
         value={email}
         handleChange={handleChange}
         {...fields.email}
-        margin="dense"
       />
       <InputField
+        sx={{ width: '350px', marginTop: '15px' }}
         value={password}
         handleChange={handleChange}
         {...fields.password}
-        margin="dense"
       />
-      <Button text={'Sign in'} />
+      <Button
+        sx={{ width: '350px', marginTop: '15px' }}
+        variant="contained"
+        type="submit"
+        margin="normal"
+      >
+        Sign in
+      </Button>
     </form>
   );
 };

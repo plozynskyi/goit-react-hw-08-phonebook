@@ -4,7 +4,8 @@ import InputField from 'components/TextField/InputField';
 
 import fields from './fields';
 import initialState from './initialState';
-import Button from 'components/Button/Button';
+
+import { Button } from '@mui/material';
 
 const RegisterForm = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({
@@ -16,24 +17,33 @@ const RegisterForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <InputField
+        sx={{ width: '350px' }}
         value={name}
         handleChange={handleChange}
         {...fields.name}
         margin="dense"
       />
       <InputField
+        sx={{ width: '350px', marginTop: '15px' }}
         value={email}
         handleChange={handleChange}
         {...fields.email}
         margin="dense"
       />
       <InputField
+        sx={{ width: '350px', marginTop: '15px' }}
         value={password}
         handleChange={handleChange}
         {...fields.password}
         margin="dense"
       />
-      <Button text={'Sign up'} />
+      <Button
+        sx={{ width: '350px', marginTop: '15px' }}
+        variant="contained"
+        type="submit"
+      >
+        Sign up
+      </Button>
     </form>
   );
 };
