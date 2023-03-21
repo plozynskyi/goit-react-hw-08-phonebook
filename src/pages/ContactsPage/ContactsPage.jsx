@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import PhoneBookList from 'components/PhoneBookList/PhoneBookList';
@@ -77,7 +77,6 @@ const ContactsPage = () => {
           )}
           {!isContacts && <p>No contacts in list</p>}
         </ContactsBox>
-        <ToastContainer theme="light" autoClose={3000} />
       </MainSection>
     </>
   );
