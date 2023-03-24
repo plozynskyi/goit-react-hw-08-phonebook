@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
+
 import useForm from 'shared/hooks/useForm';
-
 import InputField from 'components/TextField/InputField';
-
-import fields from './fields';
 import initialState from './initialState';
+import fields from './fields';
 
 import { Button } from '@mui/material';
 
@@ -48,3 +48,7 @@ const RegisterForm = ({ onSubmit }) => {
   );
 };
 export default RegisterForm;
+
+RegisterForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

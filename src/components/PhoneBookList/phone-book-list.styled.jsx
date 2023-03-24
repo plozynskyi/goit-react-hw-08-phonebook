@@ -8,22 +8,6 @@ const ContactsList = styled.ul`
   margin-left: 40px;
 `;
 
-const RemoveBtn = styled.button`
-  border: 1px solid gray;
-  border-radius: 15px;
-  background-color: inherit;
-  margin-left: 15px;
-  :hover {
-    color: rgba(0, 0, 255, 0.5);
-    border: 1px solid rgba(0, 0, 255, 0.5);
-  }
-  :active {
-    color: #fff;
-    border: 1px solid red;
-    background-color: red;
-  }
-`;
-
 const ContactItem = styled(ListItem)``;
 
 const CallContact = styled.a`
@@ -31,4 +15,4 @@ const CallContact = styled.a`
   color: inherit;
 `;
 
-export { ContactsList, ContactItem, RemoveBtn, CallContact };
+export { ContactsList, ContactItem, CallContact };

@@ -1,7 +1,6 @@
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 
 import Menu from './components/Menu/Menu';
 import UserRoutes from './UserRoutes';
@@ -18,7 +17,6 @@ function App() {
           <AuthProvider>
             <Menu />
             <UserRoutes />
-            <ToastContainer theme="light" autoClose={3000} />
           </AuthProvider>
         </BrowserRouter>
       </PersistGate>

@@ -9,14 +9,4 @@ const FilterBox = styled.div`
 
 const FilterLabel = styled.label``;
 
-const PhoneBookInput = styled.input`
-  width: 177px;
-  margin-bottom: 15px;
-  border-color: rgba(0, 0, 0, 0.5);
-  border-width: 2px;
-  :hover {
-    border-color: rgba(0, 0, 255, 0.5);
-  }
-`;
-
-export { FilterBox, FilterLabel, PhoneBookInput };
+export { FilterBox, FilterLabel };

@@ -5,7 +5,6 @@ const ProviderBox = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 5px;
-  /* outline: 1px solid red; */
 `;
 
 export { ProviderBox };
