@@ -7,8 +7,8 @@ export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const data = await api.getAllContacts();
-      return data;
+      const { data } = await api.getAllContacts();
+      return data.result;
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(response.data);
     }
@@ -20,24 +20,27 @@ export const addContact = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const result = await api.addContact(data);
+      console.log(data);
       return result;
     } catch ({ response }) {
       return rejectWithValue(response.data);
     }
   },
   {
-    condition: ({ name, number }, { getState }) => {
+    condition: ({ name, phone, email }, { getState }) => {
       const { contacts } = getState();
-      const normalizedTitle = name.toLowerCase();
-      const normalizedAuthor = number.toLowerCase();
-      const result = contacts.items.find(({ name, number }) => {
+      const normalizedName = name.toLowerCase();
+      const normalizedPhone = phone.toLowerCase();
+      const normalizedEmail = email.toLowerCase();
+      const result = contacts.items.find(({ name, phone, email }) => {
         return (
-          name.toLowerCase() === normalizedTitle &&
-          number.toLowerCase() === normalizedAuthor
+          name.toLowerCase() === normalizedName &&
+          phone.toLowerCase() === normalizedPhone &&
+          email.toLowerCase() === normalizedEmail
         );
       });
       if (result) {
-        toast.warn(`${name} is already ixist on phonebook`);
+        toast.warn(`${name} is already exist on phonebook`);
         return false;
       }
     },

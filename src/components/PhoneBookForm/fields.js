@@ -8,17 +8,28 @@ const fields = {
     title:
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
   },
-  number: {
+  phone: {
     type: 'text',
-    name: 'number',
+    name: 'phone',
     required: true,
-    label: 'User number',
+    label: 'User phone number',
     inputProps: {
       pattern: '/^[+]?3?[s]?8?[s]?(?0d{2}?)?[s]?d{3}[s|-]?d{2}[s|-]?d{2}$/',
       mask: '+38 (000) 000-00-00',
     },
     title:
       'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
+  },
+  email: {
+    type: 'text',
+    name: 'email',
+    required: true,
+    label: 'User email',
+    // inputProps: {
+    //   pattern: '/^[+]?3?[s]?8?[s]?(?0d{2}?)?[s]?d{3}[s|-]?d{2}[s|-]?d{2}$/',
+    //   mask: '+38 (000) 000-00-00',
+    // },
+    title: 'email',
   },
 };
 

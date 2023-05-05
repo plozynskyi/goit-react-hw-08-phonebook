@@ -36,7 +36,7 @@ const contactsSlice = createSlice({
         store.isLoading = false;
         store.items.push(payload);
         toast.success(
-          `${payload.name} with number ${payload.number} added to the phone book`
+          `${payload.name} with phone number ${payload.phone} added to the phone book`
         );
       })
       .addCase(addContact.rejected, (store, { payload }) => {

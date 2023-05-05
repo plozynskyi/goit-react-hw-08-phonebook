@@ -20,11 +20,11 @@ const PhoneBooksForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ name, number });
+    onSubmit({ name, phone, email });
     setState({ ...initialState });
   };
 
-  const { name, number } = state;
+  const { name, phone, email } = state;
 
   return (
     <PhoneBookForm action="" onSubmit={handleSubmit}>
@@ -44,9 +44,20 @@ const PhoneBooksForm = ({ onSubmit }) => {
           fullWidth
           size="small"
           sx={{ marginTop: '15px' }}
-          value={number}
+          value={phone}
           onChange={handleChange}
-          {...fields.number}
+          {...fields.phone}
+          margin="dense"
+        />
+      </InputWrapper>
+      <InputWrapper>
+        <InputField
+          fullWidth
+          size="small"
+          sx={{ marginTop: '15px' }}
+          value={email}
+          onChange={handleChange}
+          {...fields.email}
           margin="dense"
         />
       </InputWrapper>

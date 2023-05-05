@@ -2,6 +2,7 @@ import { instance } from './api-auth';
 
 export const getAllContacts = async () => {
   const { data } = await instance.get('/contacts');
+  // console.log(data);
   return data;
 };
 

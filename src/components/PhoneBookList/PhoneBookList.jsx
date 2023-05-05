@@ -13,14 +13,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { ContactItem, CallContact } from './phone-book-list.styled';
 
 const PhoneBookList = ({ removeContacts, items }) => {
-  const contacts = items.map(({ id, name, number }) => (
+  const contacts = items.map(({ _id, name, phone }) => (
     <ContactItem
       button={true}
-      href={`tel:${number}`}
-      key={id}
+      href={`tel:${phone}`}
+      key={_id}
       secondaryAction={
         <IconButton
-          onClick={() => removeContacts(id)}
+          onClick={() => removeContacts(_id)}
           type="button"
           edge="end"
           aria-label="delete"
@@ -32,8 +32,8 @@ const PhoneBookList = ({ removeContacts, items }) => {
       <ListItemAvatar>
         <Avatar />
       </ListItemAvatar>
-      <CallContact href={`tel:${number}`}>
-        <ListItemText primary={name} secondary={number ? number : null} />
+      <CallContact href={`tel:${phone}`}>
+        <ListItemText primary={name} secondary={phone ? phone : null} />
       </CallContact>
     </ContactItem>
   ));
@@ -57,9 +57,9 @@ PhoneBookList.propTypes = {
   removeContacts: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
     })
   ),
 };
